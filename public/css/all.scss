@@ -1,0 +1,328 @@
+@import url(http://fonts.googleapis.com/css?family=Monoton);
+$lightGray : #b3b3b1;
+$darkGray : #444444;
+$blackish : #232322;
+$googleFont : 'Monoton', cursive, sans-serif;
+
+@mixin transition ($time:400ms){
+	-webkit-transition: all $time ease 0;
+	-moz-transition: all $time ease 0;
+	transition: all $time ease 0;
+}
+@mixin box-shadow($properties){
+    -moz-box-shadow: $properties;
+    -webkit-box-shadow: $properties;
+    box-shadow: $properties;
+}
+@mixin scale($x,$y){
+    -webkit-transform:  scale($x,$y);
+    -moz-transform:  scale($x,$y);
+    -o-transform:  scale($x,$y);
+    -ms-transform:  scale($x,$y);
+    transform:  scale($x,$y);
+}
+@mixin header-title() {
+  color: $lightGray;
+  text-transform: uppercase;
+  border-top: 1px solid #d0d0d0;
+  border-bottom: 1px solid #d0d0d0;
+  margin: 40px 0;
+}
+@mixin rotation($value) {
+  -moz-transform: rotate ($value deg);
+  -webkit-transform: rotate ($value deg);
+  -o-transform: rotate ($value deg);
+  -ms-transform: rotate ($value deg);
+  transform: rotate ($value deg);
+}
+@mixin sidebarHeader() {
+  color: $darkGray;
+  text-transform: uppercase;
+  padding-bottom: 20px;
+  h5 {
+    font-weight: bold;
+  }
+}
+.isotope,
+.isotope .isotope-item {
+  /* change duration value to whatever you like */
+  -webkit-transition-duration: 0.8s;
+  -moz-transition-duration: 0.8s;
+  -ms-transition-duration: 0.8s;
+  -o-transition-duration: 0.8s;
+  transition-duration: 0.8s;
+}
+
+.isotope {
+  -webkit-transition-property: height, width;
+  -moz-transition-property: height, width;
+  -ms-transition-property: height, width;
+  -o-transition-property: height, width;
+  transition-property: height, width;
+}
+
+.isotope .isotope-item {
+  -webkit-transition-property: -webkit-transform, opacity;
+  -moz-transition-property:    -moz-transform, opacity;
+  -ms-transition-property:     -ms-transform, opacity;
+  -o-transition-property:      -o-transform, opacity;
+  transition-property:         transform, opacity;
+}
+
+/**** disabling Isotope CSS3 transitions ****/
+
+.isotope.no-transition,
+.isotope.no-transition .isotope-item,
+.isotope .isotope-item.no-transition {
+  -webkit-transition-duration: 0s;
+  -moz-transition-duration: 0s;
+  -ms-transition-duration: 0s;
+  -o-transition-duration: 0s;
+  transition-duration: 0s;
+}
+/**/
+.row {
+	margin: auto;
+}
+#left-navigation {
+	display: none;
+	background: $blackish;
+    z-index: 9;
+        .links {
+           margin-top: 50px;
+          header {
+            @include sidebarHeader();
+          }
+          dt {
+            color: $lightGray;
+            background: url(../images/info-sprite.png) no-repeat;
+            width: 16px;
+            height: 16px;
+            float: left;
+            margin: 0 10px 0 0;
+          }
+          #email {background-position: 0 0; };
+          #address {background-position: -52px 0;  }
+          #resume {background-position: -28px 0;  }
+          dd {
+            a {
+              color: $lightGray;
+              @include transition(500ms);
+              &:hover {color: #fff; text-decoration: none; }
+            }
+            small {
+              clear: both;
+              display: block;
+              margin-left: 25px;
+              padding-bottom: 10px;
+              color: #565656;
+              font-style:italic;
+            }
+          }
+        }
+}
+#portfolio-cover {
+	padding: 0;
+		#banner {
+			padding: 0;
+			background: url(../images/cover-alt.jpg) no-repeat center;
+			height: 315px;
+				-webkit-background-size: cover;
+				-moz-background-size: cover;
+				-o-background-size: cover;
+			background-size: cover;
+              blockquote {
+                border: 0;
+                padding-top: 50px;
+                  p {
+                    text-align: center;
+                    word-spacing: 0.4em;
+                    color: #fff;
+                    font: {
+                      family: $googleFont;
+                      size: 2.5em;
+                    }
+                  }
+                  small {
+                    position: absolute;
+                    bottom: 10px;
+                    right: 10px;
+                    color: #fff;
+                    opacity: 0.4
+                  }
+              }
+		}
+		#top-left-button {
+			position: absolute;
+			top: 10px;
+			left: 10px;
+            z-index: 99;
+			padding: 5px 10px 10px;
+			background: $darkGray;
+			color: $lightGray;
+			font-weight: bold;
+			font-size: 22px;
+			cursor: pointer;
+            @include box-shadow(1px 1px 10px rgba(255, 255, 255, 0.75));
+			@include transition(500ms);
+				&:hover {
+					color: #fff;
+				}
+		}
+		#avatar {
+			position: absolute;
+			left: 50%;
+			padding: 20px;
+			background-color: #fff;
+            cursor: pointer;
+              img {
+                margin: 0 auto;
+              }
+              i {
+                font-size: 50px;
+                position: absolute;
+                top: 50%;
+                margin-top: -25px;
+                left: 50%;
+                margin-left: -25px;
+                color: $lightGray;
+                display: none;
+              }
+		}
+		#cover-name {
+			padding-bottom: 30px;
+			background: #fff;
+				hgroup {
+					text-align: center;
+						padding-left: 50px;
+						padding-right: 50px;
+						h1 {
+							font-weight: 700;
+						}
+						p {
+							color: #666665;
+							font-style: italic;
+							font-size: 1.2em;
+						}
+				}
+		}		
+}
+#content-main {
+	z-index: 2;
+	background: #fff;
+	min-height: 100%;
+	border-left: 1px solid $lightGray;
+		header {
+			@include header-title();
+				h5 {
+					font-weight: bold;
+				}
+				span {
+					cursor: pointer;
+					font-size: 20px;
+					margin-top: 5px;
+					@include transition(500ms);
+						&:hover {
+							color: $darkGray;
+						}
+				}
+		}
+		#portfolio-sites {
+			margin: 0;
+			padding: 0;
+				.portfolio-item {
+					margin: 0;
+					padding: 0;
+				}
+				.portfolio-item > div {
+					margin: 10px;
+                    @include transition(.5s);
+                      &:hover {
+                        margin:0;
+                        @include box-shadow(0 0 5px #37dfff);
+                      }
+				}
+		}
+}
+#sidebar-menu {
+	background: $blackish;
+	margin-left: 0;
+    padding-left: 0;
+	color: $lightGray;
+	border-left: 1px solid #000;
+	overflow-x: hidden;
+	max-height: 100%;
+	display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+		.project-nav {
+            margin-top: 50px;
+			padding-right: 40px;
+            padding-left: 20px;
+            float: left;
+                header{
+                  @include sidebarHeader();
+                }
+				li {
+					font-size: 11px;
+					font-weight: 700;
+					background: url(../images/nav-sprite.png) no-repeat;
+					text-transform: uppercase;
+					padding-left: 30px;
+						a {
+							color: $lightGray;
+							margin: 0;
+                            padding: 7px;
+							display: block;
+						}
+				}
+                #sass { background-position: 0 -444px; &:hover {background-position: 0 -411px; } }
+                #sass.active {background-position: 0 -411px; }
+                #bootstrap_icon { background-position: 0 -512px; &:hover {background-position: 0 -479px; } }
+                #bootstrap_icon.active {background-position: 0 -479px; }
+				#wordpress { background-position: 0 -169px; &:hover {background-position: 0 -375.5px; } }
+				#wordpress.active {background-position: 0 -375.5px; }						
+				#drupal { background-position: 0 -99px; &:hover {background-position: 0 -305px; } }
+				#drupal.active {background-position: 0 -305px; } 
+				#html5 { background-position: 0 -134px; &:hover {background-position: 0 -340.5px; } }
+				#html5.active {background-position: 0 -340.5px; } 
+				#jquery { background-position: 0 -65px; &:hover {background-position: 0 -271px; } }
+				#jquery.active {background-position: 0 -271px; }
+				#team-build { background-position: 0 -36px;  &:hover{background-position: 0 -242px; }}
+				#team-build.active {background-position: 0 -242px; }
+				#all {background-position: 0 0; &:hover {background-position: 0 -206px; } } 
+				#all.active {background-position: 0 -206px; }
+				a:hover, .active a { background: none; color: #fff;}
+		}
+}
+.close {
+	color: $lightGray;
+	@include transition(500ms);
+		&:hover { color: #fff;}
+}
+
+
+	@media(min-width:768px){ /* small */
+
+	}
+	@media(min-width:992px){ /* medium */
+		#portfolio-cover {
+			float: left;
+			position: fixed;
+				#cover-name {
+					padding-bottom: 100%;
+				}
+		}
+        #sidebar-menu {
+            position: relative;
+            width: 16.666666666666664%;
+        }
+      #left-navigation {
+        z-index: auto;
+      }
+	}
+	@media(min-width:1200px){ /* large */
+		
+	}
